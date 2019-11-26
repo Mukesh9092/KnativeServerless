@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: javaspringdedicated-deployment
+  labels:
+    app: javaspringdedicated
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: javaspringdedicated
+  template:
+    metadata:
+      labels:
+        app: javaspringdedicated
+    spec:
+      containers:
+      - name: javaspringdedicated
+        image: docker.io/nitinmuteja/helloworld-java-spring
+        ports:
+        - containerPort: 80
+        env:
+        - name: TARGET
+          value: "Spring Boot Sample v1 dedicated"
+        - name: PORT
+          value: "80" 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworld-java-spring-dedicated-deployment-loadbalancer
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 80
+  selector:
+    app: javaspringdedicated
