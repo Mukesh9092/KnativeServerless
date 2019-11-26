@@ -14,8 +14,7 @@ cluster. You can also download a working copy of the sample, by running the
 following commands:
 
 ```shell
-git clone -b "{{< branch >}}" https://github.com/knative/docs knative-docs cd
-knative-docs/docs/serving/samples/hello-world/helloworld-java-spring
+https://github.com/nitinmuteja/KnativeServerless.git
 ```
 
 ## Before you begin
