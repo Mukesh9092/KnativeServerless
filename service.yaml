@@ -3,8 +3,15 @@ kind: Service
 metadata:
   name: helloworld-java-spring
   namespace: default
+  annotations:
+        autoscaling.knative.dev/target: 1
+        autoscaling.knative.dev/window: 6s
+        
 spec:
   template:
+    metadata: 
+     annotations:
+      autoscaling.knative.dev/maxScale: "4"
     spec:
       containers:
       - image: docker.io/nitinmuteja/helloworld-java-spring
